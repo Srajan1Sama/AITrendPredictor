@@ -1,9 +1,15 @@
-# AI Trend Predictor
+pragma solidity ^0.8.0;
 
-## Project Description
-AI Trend Predictor is a Solidity-based smart contract that provides AI-generated trend predictions. Users can retrieve the latest trend data and historical predictions directly from the blockchain.
+contract AITrendPredictor {
+    uint256[] private trendPredictions = [102, 105, 110, 120, 130, 140, 150, 160, 175, 190];
+    uint256 private latestIndex = 9;
 
-## Smart Contract Address
-```
-0x9DcAEAF63a876D59645ae1fdb25Eac28794BA5A7
-```
+    function getLatestTrend() public view returns (uint256) {
+        return trendPredictions[latestIndex];
+    }
+    
+    function getTrendAtIndex(uint256 index) public view returns (uint256) {
+        require(index <= latestIndex, "Index out of bounds");
+        return trendPredictions[index];
+    }
+}
